@@ -1,0 +1,21 @@
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+sources:
+    cloud:
+        inputs:
+            - location: https://s3.amazonaws.com/dp-devportal-images/oas/openapi.yml
+        registry:
+            location: registry.speakeasyapi.dev/dailypay/dailypay/xapi
+targets:
+    typescript:
+        target: typescript
+        source: cloud
+        codeSamples:
+            output: codeSamples.yaml
+            registry:
+                location: registry.speakeasyapi.dev/dailypay/dailypay/xapi-typescript-code-samples
+            langOverride: JavaScript
+            labelOverride:
+                omit: true
+        testing:
+            enabled: true

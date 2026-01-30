@@ -1,0 +1,558 @@
+overlay: 1.0.0
+info:
+  title: CodeSamples overlay for typescript target
+  version: 0.0.0
+actions:
+  - target: $["paths"]["/cards/generic"]["post"]
+    update:
+      x-codeSamples:
+        - lang: JavaScript
+          source: |-
+            import { SDK } from "@dailypay/dailypay";
+
+            const sdk = new SDK();
+
+            async function run() {
+              const result = await sdk.cardTokenization.create({
+                firstName: "Edith",
+                lastName: "Clarke",
+                cardNumber: "4007589999999912",
+                expirationYear: "2027",
+                expirationMonth: "02",
+                cvv: "123",
+                addressLineOne: "123 Kebly Street",
+                addressLineTwo: "Unit C",
+                addressCity: "Fort Lee",
+                addressState: "NJ",
+                addressZipCode: "07237",
+                addressCountry: "US",
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/rest/accounts"]["get"]
+    update:
+      x-codeSamples:
+        - lang: JavaScript
+          source: |-
+            import { SDK } from "@dailypay/dailypay";
+
+            const sdk = new SDK({
+              version: 3,
+              security: {
+                oauthClientCredentialsToken: {
+                  clientID: "<YOUR_CLIENT_ID_HERE>",
+                  clientSecret: "<YOUR_CLIENT_SECRET_HERE>",
+                  tokenURL: "<YOUR_TOKEN_URL_HERE>",
+                },
+              },
+            });
+
+            async function run() {
+              const result = await sdk.accounts.list({
+                filterPersonId: "aa860051-c411-4709-9685-c1b716df611b",
+                filterAccountType: "EARNINGS_BALANCE",
+                filterSubtype: "ODP",
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/rest/accounts"]["post"]
+    update:
+      x-codeSamples:
+        - lang: JavaScript
+          source: |-
+            import { SDK } from "@dailypay/dailypay";
+
+            const sdk = new SDK({
+              version: 3,
+              security: {
+                oauthClientCredentialsToken: {
+                  clientID: "<YOUR_CLIENT_ID_HERE>",
+                  clientSecret: "<YOUR_CLIENT_SECRET_HERE>",
+                  tokenURL: "<YOUR_TOKEN_URL_HERE>",
+                },
+              },
+            });
+
+            async function run() {
+              const result = await sdk.accounts.create({
+                data: {
+                  type: "accounts",
+                  attributes: {
+                    name: "Acme Bank Checking Account",
+                    accountType: "DEPOSITORY",
+                    subtype: "CHECKING",
+                    depositoryAccountDetails: {
+                      firstName: "Edith",
+                      lastName: "Clarke",
+                      routingNumber: "XXXXX2021",
+                      accountNumber: "XXXXXX4321",
+                    },
+                  },
+                  relationships: {
+                    person: {
+                      data: {
+                        type: "people",
+                        id: "3fa8f641-5717-4562-b3fc-2c963f66afa6",
+                      },
+                    },
+                  },
+                },
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/rest/accounts/{account_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: JavaScript
+          source: |-
+            import { SDK } from "@dailypay/dailypay";
+
+            const sdk = new SDK({
+              version: 3,
+              security: {
+                oauthClientCredentialsToken: {
+                  clientID: "<YOUR_CLIENT_ID_HERE>",
+                  clientSecret: "<YOUR_CLIENT_SECRET_HERE>",
+                  tokenURL: "<YOUR_TOKEN_URL_HERE>",
+                },
+              },
+            });
+
+            async function run() {
+              const result = await sdk.accounts.read({
+                accountId: "2bc7d781-3247-46f6-b60f-4090d214936a",
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/rest/health"]["get"]
+    update:
+      x-codeSamples:
+        - lang: JavaScript
+          source: |-
+            import { SDK } from "@dailypay/dailypay";
+
+            const sdk = new SDK({
+              security: {
+                oauthClientCredentialsToken: {
+                  clientID: "<YOUR_CLIENT_ID_HERE>",
+                  clientSecret: "<YOUR_CLIENT_SECRET_HERE>",
+                  tokenURL: "<YOUR_TOKEN_URL_HERE>",
+                },
+              },
+            });
+
+            async function run() {
+              const result = await sdk.health.getHealth();
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/rest/jobs"]["get"]
+    update:
+      x-codeSamples:
+        - lang: JavaScript
+          source: |-
+            import { SDK } from "@dailypay/dailypay";
+
+            const sdk = new SDK({
+              version: 3,
+              security: {
+                oauthClientCredentialsToken: {
+                  clientID: "<YOUR_CLIENT_ID_HERE>",
+                  clientSecret: "<YOUR_CLIENT_SECRET_HERE>",
+                  tokenURL: "<YOUR_TOKEN_URL_HERE>",
+                },
+              },
+            });
+
+            async function run() {
+              const result = await sdk.jobs.list({
+                filterExternalIdentifiersPrimaryIdentifier: "PRIMARY_ID_98765",
+                filterExternalIdentifiersEmployeeId: "EMP123456",
+                filterExternalIdentifiersGroup: "12345",
+                filterPersonId: "aa860051-c411-4709-9685-c1b716df611b",
+                filterOrganizationId: "f0b30634-108c-439c-a8c1-c6a91197f022",
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/rest/jobs/{job_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: JavaScript
+          source: |-
+            import { SDK } from "@dailypay/dailypay";
+
+            const sdk = new SDK({
+              version: 3,
+              security: {
+                oauthClientCredentialsToken: {
+                  clientID: "<YOUR_CLIENT_ID_HERE>",
+                  clientSecret: "<YOUR_CLIENT_SECRET_HERE>",
+                  tokenURL: "<YOUR_TOKEN_URL_HERE>",
+                },
+              },
+            });
+
+            async function run() {
+              const result = await sdk.jobs.read({
+                jobId: "aa860051-c411-4709-9685-c1b716df611b",
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/rest/jobs/{job_id}"]["patch"]
+    update:
+      x-codeSamples:
+        - lang: JavaScript
+          source: |-
+            import { SDK } from "@dailypay/dailypay";
+
+            const sdk = new SDK({
+              version: 3,
+              security: {
+                oauthClientCredentialsToken: {
+                  clientID: "<YOUR_CLIENT_ID_HERE>",
+                  clientSecret: "<YOUR_CLIENT_SECRET_HERE>",
+                  tokenURL: "<YOUR_TOKEN_URL_HERE>",
+                },
+              },
+            });
+
+            async function run() {
+              const result = await sdk.jobs.update({
+                jobId: "e9d84b0d-92ba-43c9-93bf-7c993313fa6f",
+                jobUpdateData: {
+                  jobUpdateResource: {
+                    type: "jobs",
+                    id: "e9d84b0d-92ba-43c9-93bf-7c993313fa6f",
+                    jobUpdateRelationships: {
+                      directDepositDefaultDepository: {
+                        data: {
+                          type: "accounts",
+                          id: "123e4567-e89b-12d3-a456-426614174000",
+                        },
+                      },
+                      directDepositDefaultCard: {
+                        data: {
+                          type: "accounts",
+                          id: "223e4567-e89b-12d3-a456-426614174001",
+                        },
+                      },
+                    },
+                  },
+                },
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/rest/organizations"]["get"]
+    update:
+      x-codeSamples:
+        - lang: JavaScript
+          source: |-
+            import { SDK } from "@dailypay/dailypay";
+
+            const sdk = new SDK({
+              version: 3,
+              security: {
+                oauthClientCredentialsToken: {
+                  clientID: "<YOUR_CLIENT_ID_HERE>",
+                  clientSecret: "<YOUR_CLIENT_SECRET_HERE>",
+                  tokenURL: "<YOUR_TOKEN_URL_HERE>",
+                },
+              },
+            });
+
+            async function run() {
+              const result = await sdk.organizations.list({});
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/rest/organizations/{organization_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: JavaScript
+          source: |-
+            import { SDK } from "@dailypay/dailypay";
+
+            const sdk = new SDK({
+              version: 3,
+              security: {
+                oauthClientCredentialsToken: {
+                  clientID: "<YOUR_CLIENT_ID_HERE>",
+                  clientSecret: "<YOUR_CLIENT_SECRET_HERE>",
+                  tokenURL: "<YOUR_TOKEN_URL_HERE>",
+                },
+              },
+            });
+
+            async function run() {
+              const result = await sdk.organizations.read({
+                organizationId: "123e4567-e89b-12d3-a456-426614174000",
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/rest/paychecks"]["get"]
+    update:
+      x-codeSamples:
+        - lang: JavaScript
+          source: |-
+            import { SDK } from "@dailypay/dailypay";
+
+            const sdk = new SDK({
+              version: 3,
+              security: {
+                oauthClientCredentialsToken: {
+                  clientID: "<YOUR_CLIENT_ID_HERE>",
+                  clientSecret: "<YOUR_CLIENT_SECRET_HERE>",
+                  tokenURL: "<YOUR_TOKEN_URL_HERE>",
+                },
+              },
+            });
+
+            async function run() {
+              const result = await sdk.paychecks.list({
+                filterJobId: "e9d84b0d-92ba-43c9-93bf-7c993313fa6f",
+                filterStatus: "DEPOSITED",
+                filterDepositExpectedAtGte: new Date("2023-03-15T04:00:00Z"),
+                filterDepositExpectedAtLt: new Date("2023-03-15T04:00:00Z"),
+                filterPayPeriodEndsAtGte: new Date("2023-03-15T04:00:00Z"),
+                filterPayPeriodEndsAtLt: new Date("2023-03-15T04:00:00Z"),
+                filterPayPeriodStartsAtGte: new Date("2023-03-15T04:00:00Z"),
+                filterPayPeriodStartsAtLt: new Date("2023-03-15T04:00:00Z"),
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/rest/paychecks/{paycheck_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: JavaScript
+          source: |-
+            import { SDK } from "@dailypay/dailypay";
+
+            const sdk = new SDK({
+              version: 3,
+              security: {
+                oauthClientCredentialsToken: {
+                  clientID: "<YOUR_CLIENT_ID_HERE>",
+                  clientSecret: "<YOUR_CLIENT_SECRET_HERE>",
+                  tokenURL: "<YOUR_TOKEN_URL_HERE>",
+                },
+              },
+            });
+
+            async function run() {
+              const result = await sdk.paychecks.read({
+                paycheckId: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/rest/people/{person_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: JavaScript
+          source: |-
+            import { SDK } from "@dailypay/dailypay";
+
+            const sdk = new SDK({
+              version: 3,
+              security: {
+                oauthClientCredentialsToken: {
+                  clientID: "<YOUR_CLIENT_ID_HERE>",
+                  clientSecret: "<YOUR_CLIENT_SECRET_HERE>",
+                  tokenURL: "<YOUR_TOKEN_URL_HERE>",
+                },
+              },
+            });
+
+            async function run() {
+              const result = await sdk.people.read({
+                personId: "aa860051-c411-4709-9685-c1b716df611b",
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/rest/people/{person_id}"]["patch"]
+    update:
+      x-codeSamples:
+        - lang: JavaScript
+          source: |-
+            import { SDK } from "@dailypay/dailypay";
+
+            const sdk = new SDK({
+              version: 3,
+              security: {
+                oauthClientCredentialsToken: {
+                  clientID: "<YOUR_CLIENT_ID_HERE>",
+                  clientSecret: "<YOUR_CLIENT_SECRET_HERE>",
+                  tokenURL: "<YOUR_TOKEN_URL_HERE>",
+                },
+              },
+            });
+
+            async function run() {
+              const result = await sdk.people.update({
+                personId: "aa860051-c411-4709-9685-c1b716df611b",
+                personUpdateData: {
+                  personUpdateResource: {
+                    type: "people",
+                    id: "aa860051-c411-4709-9685-c1b716df611b",
+                    personUpdateAttributes: {
+                      stateOfResidence: "NY",
+                    },
+                  },
+                },
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/rest/transfers"]["get"]
+    update:
+      x-codeSamples:
+        - lang: JavaScript
+          source: |-
+            import { SDK } from "@dailypay/dailypay";
+
+            const sdk = new SDK({
+              version: 3,
+              security: {
+                oauthClientCredentialsToken: {
+                  clientID: "<YOUR_CLIENT_ID_HERE>",
+                  clientSecret: "<YOUR_CLIENT_SECRET_HERE>",
+                  tokenURL: "<YOUR_TOKEN_URL_HERE>",
+                },
+              },
+            });
+
+            async function run() {
+              const result = await sdk.transfers.list({
+                include: "estimated_funding_sources,final_funding_sources",
+                filterSubmittedAtGt: new Date("2023-03-15T04:00:00Z"),
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/rest/transfers"]["post"]
+    update:
+      x-codeSamples:
+        - lang: JavaScript
+          source: |-
+            import { SDK } from "@dailypay/dailypay";
+
+            const sdk = new SDK({
+              version: 3,
+              security: {
+                oauthClientCredentialsToken: {
+                  clientID: "<YOUR_CLIENT_ID_HERE>",
+                  clientSecret: "<YOUR_CLIENT_SECRET_HERE>",
+                  tokenURL: "<YOUR_TOKEN_URL_HERE>",
+                },
+              },
+            });
+
+            async function run() {
+              const result = await sdk.transfers.create({
+                include: "estimated_funding_sources,final_funding_sources",
+                idempotencyKey: "e2736aa1-78c4-4cc6-b0a6-848e733f232a",
+                transferCreateData: {
+                  data: {
+                    type: "transfers",
+                    attributes: {
+                      preview: true,
+                      amount: 15000,
+                      currency: "USD",
+                      schedule: "WITHIN_THIRTY_MINUTES",
+                    },
+                    relationships: {
+                      origin: {
+                        data: {
+                          type: "accounts",
+                          id: "123e4567-e89b-12d3-a456-426614174000",
+                        },
+                      },
+                      destination: {
+                        data: {
+                          type: "accounts",
+                          id: "223e4567-e89b-12d3-a456-426614174001",
+                        },
+                      },
+                      person: {
+                        data: {
+                          type: "people",
+                          id: "aa860051-c411-4709-9685-c1b716df611b",
+                        },
+                      },
+                    },
+                  },
+                },
+              });
+
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/rest/transfers/{transfer_id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: JavaScript
+          source: |-
+            import { SDK } from "@dailypay/dailypay";
+
+            const sdk = new SDK({
+              version: 3,
+              security: {
+                oauthClientCredentialsToken: {
+                  clientID: "<YOUR_CLIENT_ID_HERE>",
+                  clientSecret: "<YOUR_CLIENT_SECRET_HERE>",
+                  tokenURL: "<YOUR_TOKEN_URL_HERE>",
+                },
+              },
+            });
+
+            async function run() {
+              const result = await sdk.transfers.read({
+                include: "estimated_funding_sources,final_funding_sources",
+                transferId: "aba332a2-24a2-46de-8257-5040e71ab210",
+              });
+
+              console.log(result);
+            }
+
+            run();

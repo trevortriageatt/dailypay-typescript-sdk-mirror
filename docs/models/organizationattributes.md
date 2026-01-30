@@ -1,0 +1,22 @@
+# OrganizationAttributes
+
+## Example Usage
+
+```typescript
+import { OrganizationAttributes } from "@dailypay/dailypay/models";
+
+let value: OrganizationAttributes = {
+  name: "DailyPay",
+  products: [
+    "ODP",
+    "DAILYPAY_CARD",
+  ],
+};
+```
+
+## Fields
+
+| Field                                                          | Type                                                           | Required                                                       | Description                                                    | Example                                                        |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `name`                                                         | *string*                                                       | :heavy_minus_sign:                                             | Organization's name                                            | DailyPay                                                       |
+| `products`                                                     | *string*[]                                                     | :heavy_minus_sign:                                             | List of the names of products available for this organization. | [<br/>"ODP",<br/>"DAILYPAY_CARD"<br/>]                         |
