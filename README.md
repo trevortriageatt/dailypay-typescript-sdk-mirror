@@ -1,6 +1,6 @@
 # @dailypay/dailypay
 
-yes yes
+yes yes 1
 
 Developer-friendly & type-safe Typescript SDK specifically catered to leverage the DailyPay Public REST API.
 
